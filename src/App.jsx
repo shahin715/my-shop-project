@@ -10,10 +10,10 @@ import TopProducts from "./Components/TopProduct/TopProducts";
 import Popup from "./Components/Popup/Popup";
 import Footer from "./Fotter/Fotter";
 import Bestproduct from "./Components/BestProduct/Bestproduct";
-import KidsWear from "./Components/Pages/kids-wear/kidswear";
 import Womenwear from "./Components/Pages/Women-wear/womenwear";
 import Womenallproduct from "./Components/Pages/Women-wear/womenallproduct"
 import ElectronicsProductList from "./Components/Pages/Electronics/ElectronicsProductList";
+import KidsWearProductList from "./Components/Pages/kids-wear/kidswear";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
@@ -48,7 +48,7 @@ const App = () => {
             </>
           }
         />
-        <Route path="/kids-wear" element={<KidsWear />} />
+        <Route path="/kids-wear" element={<KidsWearProductList />} />
         <Route path="/womens-wear" element={<Womenwear />} />
         <Route path="/womenallproduct" element={<Womenallproduct />} />
         <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
