@@ -13,7 +13,7 @@ import Bestproduct from "./sections/BestProduct/Bestproduct";
 import Womenwear from "./sections/comPages/Women-wear/womenwear";
 import Womenallproduct from "./sections/comPages/Women-wear/womenallproduct"
 import ElectronicsProductList from "./sections/comPages/Electronics/ElectronicsProductList";
-import KidsWearProductList from "./sections/comPages/kids-wear/kidswear";
+import KidsWearProductList from './sections/comPages/kids-wear/KidsWear';
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
