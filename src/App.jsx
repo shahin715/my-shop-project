@@ -10,10 +10,10 @@ import TopProducts from "./sections/TopProduct/TopProducts";
 import Popup from "./sections/Popup/Popup";
 import Footer from "./sections/Fotter/Fotter";
 import Bestproduct from "./sections/BestProduct/Bestproduct";
-import Womenwear from "./sections/Pages/Women-wear/womenwear";
-import Womenallproduct from "./sections/Pages/Women-wear/womenallproduct"
-import ElectronicsProductList from "./sections/Pages/Electronics/ElectronicsProductList";
-import KidsWearProductList from "./sections/Pages/kids-wear/kidswear";
+import Womenwear from "./sections/pages/Women-wear/womenwear";
+import Womenallproduct from "./sections/pages/Women-wear/womenallproduct"
+import ElectronicsProductList from "./sections/pages/Electronics/ElectronicsProductList";
+import KidsWearProductList from "./sections/pages/kids-wear/kidswear";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
