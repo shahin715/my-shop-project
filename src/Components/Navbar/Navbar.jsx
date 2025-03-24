@@ -9,9 +9,9 @@ import { Link } from "react-router-dom";
 const Menu = [
   { id: 1, name: "Home", link: "/" }, // Fixed link
   { id: 2, name: "Top Rated", link: "/#services" },
-  { id: 3, name: "Kids Wear", link: "/kids-wear" }, // Fixed link to match routing
+  { id: 3, name: "Kids Wear", link: "/kids-wear" }, 
   { id: 4, name: "Women's wear", link: "/womens-wear" },
-  { id: 5, name: "Electronics", link: "/#" },
+  { id: 5, name: "Electronics", link: "/ElectronicsProductList" },
 ];
 
 const DropDropdownlist = [

@@ -13,6 +13,8 @@ import Bestproduct from "./Components/BestProduct/Bestproduct";
 import KidsWear from "./Components/Pages/kids-wear/kidswear";
 import Womenwear from "./Components/Pages/Women-wear/womenwear";
 import Womenallproduct from "./Components/Pages/Women-wear/womenallproduct"
+import ElectronicsProductList from "./Components/Pages/Electronics/ElectronicsProductList";
+
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
 
@@ -49,6 +51,8 @@ const App = () => {
         <Route path="/kids-wear" element={<KidsWear />} />
         <Route path="/womens-wear" element={<Womenwear />} />
         <Route path="/womenallproduct" element={<Womenallproduct />} />
+        <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
+       
       </Routes>
 
       <Popup />

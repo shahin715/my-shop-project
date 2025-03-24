@@ -4,19 +4,26 @@ import Img2 from "../../../assets/images/product2.jpg";
 import Img3 from "../../../assets/images/product3.jpg";
 import Img4 from "../../../assets/images/product4.jpg";
 import Img5 from "../../../assets/images/product5.jpg";
+import Img6 from "../../../assets/images/product3i.webp"
+import Img7 from "../../../assets/images/product6.jpg";
+import Img8 from "../../../assets/images/product7.jpg";
+import Img9 from "../../../assets/images/product8.jpg";
+import Img10 from "../../../assets/images/product9.jpg";
+import Img11 from "../../../assets/images/product10.jpg";
+
 
 // Sample data for products
 const products = [
   { id: 1, img: Img1, title: 'Product 1' },
   { id: 2, img: Img2, title: 'Product 2' },
-  { id: 3, img: Img3, title: 'Product 3' },
+  { id: 3, img: Img6, title: 'Product 3' },
   { id: 4, img: Img4, title: 'Product 4' },
   { id: 5, img: Img5, title: 'Product 5' },
-  { id: 6, img: Img1, title: 'Product 6' },
-  { id: 7, img: Img2, title: 'Product 7' },
-  { id: 8, img: Img3, title: 'Product 8' },
-  { id: 9, img: Img4, title: 'Product 9' },
-  { id: 10, img: Img5, title: 'Product 10' },
+  { id: 6, img: Img7, title: 'Product 6' },
+  { id: 7, img: Img8, title: 'Product 7' },
+  { id: 8, img: Img9, title: 'Product 8' },
+  { id: 9, img: Img10, title: 'Product 9' },
+  { id: 10, img: Img11, title: 'Product 10' },
 ];
 
 const WomenAllProduct = () => {

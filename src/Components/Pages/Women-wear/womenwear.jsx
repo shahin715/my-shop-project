@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Img1 from "../../../assets/images/product1.webp";
 import Img2 from "../../../assets/images/product2.jpg";
-import Img3 from "../../../assets/images/product3.jpg";
+import Img3 from "../../../assets/images/product3i.webp";
 import Img4 from "../../../assets/images/product4.jpg";
 import Img5 from "../../../assets/images/product5.jpg";
 
@@ -26,7 +26,7 @@ const ProductsData = [
   {
     id: 3,
     img: Img3,
-    title: "Goggles",
+    title: "Printed Top",
     aosDelay: "400",
     color: "Black",
     rating: "4.7/5"
