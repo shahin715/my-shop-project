@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom"; // Remove BrowserRouter import
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Navbar from "./Components/Navbar/Navbar";
-import Banner from "./Components/Banner/banner";
-import Hero from "./Components/Hero/hero";
-import Products from "./Components/Product/products";
-import TopProducts from "./Components/TopProduct/TopProducts";
-import Popup from "./Components/Popup/Popup";
+import Navbar from "./components/Navbar/Navbar";
+import Banner from "./components/Banner/banner";
+import Hero from "./components/Hero/hero";
+import Products from "./components/Product/products";
+import TopProducts from "./components/TopProduct/TopProducts";
+import Popup from "./components/Popup/Popup";
 import Footer from "./Fotter/Fotter";
-import Bestproduct from "./Components/BestProduct/Bestproduct";
-import Womenwear from "./Components/Pages/Women-wear/womenwear";
-import Womenallproduct from "./Components/Pages/Women-wear/womenallproduct"
-import ElectronicsProductList from "./Components/Pages/Electronics/ElectronicsProductList";
-import KidsWearProductList from "./Components/Pages/kids-wear/kidswear";
+import Bestproduct from "./components/BestProduct/Bestproduct";
+import Womenwear from "./components/Pages/Women-wear/womenwear";
+import Womenallproduct from "./components/Pages/Women-wear/womenallproduct"
+import ElectronicsProductList from "./components/Pages/Electronics/ElectronicsProductList";
+import KidsWearProductList from "./components/Pages/kids-wear/kidswear";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
