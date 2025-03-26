@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom"; // Remove BrowserRouter import
+import { Routes, Route } from "react-router-dom"; 
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "./sections/Navbar/Navbar";
@@ -14,7 +14,7 @@ import Womenwear from "./sections/comPages/Women-wear/womenwear";
 import Womenallproduct from "./sections/comPages/Women-wear/womenallproduct"
 import ElectronicsProductList from "./sections/comPages/Electronics/ElectronicsProductList";
 import KidsWearProductList from './sections/comPages/kids-wear/KidsWear';
-
+import KidsProductDetail from  './sections/comPages/kids-wear/KidsProductDetail'
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
 
@@ -45,14 +45,15 @@ const App = () => {
               <Products />
               <TopProducts handleOrderPopup={handleOrderPopup} />
               <Bestproduct />
+             
             </>
           }
         />
         <Route path="/kids-wear" element={<KidsWearProductList />} />
+        <Route path="/kids/:id" element={<KidsProductDetail />} />
         <Route path="/womens-wear" element={<Womenwear />} />
         <Route path="/womenallproduct" element={<Womenallproduct />} />
         <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
-       
       </Routes>
 
       <Popup />

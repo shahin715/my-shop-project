@@ -3,8 +3,8 @@ import React from 'react'
 import Img1 from "../../../assets/images/Smarthphone.avif";
 import Img2 from "../../../assets/images/Laptop.jpeg";
 import Img3 from "../../../assets/images/TV.jpeg";
-import Img4 from "../../../assets/images/kid4.jpg";
-import Img5 from "../../../assets/images/kid5.jpg";
+import Img4 from "../../../assets/images/headphone.webp";
+import Img5 from "../../../assets/images/Gaming.jpeg";
 
 
 // Sample data for Kids' Wear products
@@ -24,13 +24,13 @@ const ElectronicsProductList = () => {
       </div>
       <div>
         {/* Grid for products */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5 ">
           {Electronic.map((product) => (
             <div key={product.id} className="text-center">
               <img
                 src={product.img}
                 alt={product.title}
-                className="h-[220px] object-cover rounded-md cursor-pointer"
+                className="h-[220px] object-cover rounded-xl cursor-pointer "
               />
               <h3 className="font-semibold mt-3">{product.title}</h3>
             </div>

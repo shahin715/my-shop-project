@@ -22,6 +22,7 @@ const Popup = ({ orderPopup, setOrderPopup }) => {
               </div>
               {/* form section */}
               <div className="mt-4">
+              
                 <input
                   type="text"
                   placeholder="Name"
