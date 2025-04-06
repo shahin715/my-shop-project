@@ -29,7 +29,6 @@ const KidsWearProductList = () => {
                     {KidsWear.map((product) => (
                         <Link to={`/kids/${product.id}`} key={product.id}>
                             {" "}
-                            {/* Add key here */}
                             <div className="text-center cursor-pointer">
                                 <img
                                     src={product.img}
