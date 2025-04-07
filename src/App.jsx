@@ -14,7 +14,8 @@ import Womenwear from "./sections/comPages/Women-wear/womenwear";
 import Womenallproduct from "./sections/comPages/Women-wear/womenallproduct"
 import ElectronicsProductList from "./sections/comPages/Electronics/ElectronicsProductList";
 import KidsWearProductList from './sections/comPages/kids-wear/KidsWear';
-import KidsProductDetail from  './sections/comPages/kids-wear/KidsProductDetail'
+import KidsProductDetail from  './sections/comPages/kids-wear/KidsProductDetail';
+import Order from "./sections/Order/order";
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
 
@@ -49,6 +50,7 @@ const App = () => {
             </>
           }
         />
+         <Route path="/orders" element={<Order />} />
         <Route path="/kids-wear" element={<KidsWearProductList />} />
         <Route path="/kids/:id" element={<KidsProductDetail />} />
         <Route path="/womens-wear" element={<Womenwear />} />

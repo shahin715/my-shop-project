@@ -2,14 +2,13 @@ import React from "react";
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
-// import DarkMode from "./DarkMode";
 import { FiShoppingBag } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Menu = [
-  { id: 1, name: "Home", link: "/" }, // Fixed link
+  { id: 1, name: "Home", link: "/" },
   { id: 2, name: "Top Rated", link: "/#services" },
-  { id: 3, name: "Kids Wear", link: "/kids-wear" }, 
+  { id: 3, name: "Kids Wear", link: "/kids-wear" },
   { id: 4, name: "Women's wear", link: "/womens-wear" },
   { id: 5, name: "Electronics", link: "/ElectronicsProductList" },
 ];
@@ -20,16 +19,25 @@ const DropDropdownlist = [
 ];
 
 const Navbar = ({ handleOrderPopup }) => {
+  const navigate = useNavigate();
+
+  const handleOrderClick = () => {
+    if (handleOrderPopup) {
+      handleOrderPopup(); // If popup handler is provided
+    }
+    navigate("/orders"); // Always navigate to orders page
+  };
+
   return (
     <div className="shadow-md bg-white dark:bg-slate-800 dark:text-white duration-200 relative z-40">
       {/* Upper Navbar */}
       <div className="bg-[#4263eb]/40 py-2">
         <div className="container flex justify-between items-center">
           <div>
-            <a href="#" className="font-bold text-xl flex items-center gap-1">
+            <Link to="/" className="font-bold text-xl flex items-center gap-1">
               <FiShoppingBag size="30" />
               ShopNow
-            </a>
+            </Link>
           </div>
 
           {/* Search Bar */}
@@ -46,7 +54,7 @@ const Navbar = ({ handleOrderPopup }) => {
 
             {/* Order Button */}
             <button
-              onClick={handleOrderPopup}
+              onClick={handleOrderClick}
               className="bg-gradient-to-r from-[#4263eb] to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group"
             >
               <span className="group-hover:block hidden transition-all duration-200">
@@ -67,7 +75,7 @@ const Navbar = ({ handleOrderPopup }) => {
           {Menu.map((data) => (
             <li key={data.id}>
               <Link
-                to={data.link} // Changed href to to
+                to={data.link}
                 className="inline-block px-4 hover:text-primary duration-200"
               >
                 {data.name}
@@ -87,7 +95,7 @@ const Navbar = ({ handleOrderPopup }) => {
                 {DropDropdownlist.map((data) => (
                   <li key={data.id}>
                     <a
-                      href={data.link} // Dropdown items still use href for external links
+                      href={data.link}
                       className="inline-block w-full rounded-md p-2 hover:bg-primary/20"
                     >
                       {data.name}
@@ -103,9 +111,8 @@ const Navbar = ({ handleOrderPopup }) => {
   );
 };
 
-// Set a default function to avoid errors if `handleOrderPopup` is not provided
 Navbar.defaultProps = {
-  handleOrderPopup: () => console.log("Order button clicked"),
+  handleOrderPopup: null, // Changed to null since we're using navigation
 };
 
 export default Navbar;
