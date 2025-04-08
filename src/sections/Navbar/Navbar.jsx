@@ -4,6 +4,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
+import { useOrder } from "../Order/OrderContextStore"; // Import the useOrder hook
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
@@ -20,6 +21,7 @@ const DropDropdownlist = [
 
 const Navbar = ({ handleOrderPopup }) => {
   const navigate = useNavigate();
+  const { orders } = useOrder(); // Get orders from the context
 
   const handleOrderClick = () => {
     if (handleOrderPopup) {
@@ -46,6 +48,7 @@ const Navbar = ({ handleOrderPopup }) => {
               <input
                 type="text"
                 placeholder="Search"
+                aria-label="Search products"
                 className="w-[200px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-lg border border-gray-300 py-1 px-2
                 text-sm focus:outline-none focus:border-[#4263eb] dark:border-gray-500 dark:bg-slate-800"
               />
@@ -57,8 +60,13 @@ const Navbar = ({ handleOrderPopup }) => {
               onClick={handleOrderClick}
               className="bg-gradient-to-r from-[#4263eb] to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group"
             >
-              <span className="group-hover:block hidden transition-all duration-200">
+              <span className="relative">
                 Order
+                {orders.length > 0 && (
+                  <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                    {orders.length}
+                  </span>
+                )}
               </span>
               <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
             </button>
@@ -112,9 +120,10 @@ const Navbar = ({ handleOrderPopup }) => {
 };
 
 Navbar.defaultProps = {
-  handleOrderPopup: null, // Changed to null since we're using navigation
+  handleOrderPopup: null, 
 };
 
 export default Navbar;
+
 
 
