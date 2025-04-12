@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { OrderContext } from "./OrderContextStore"; // shared context
+import { OrderContext } from "./OrderContextStore"; 
 
 export const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
