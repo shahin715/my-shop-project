@@ -4,7 +4,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
-import { useOrder } from "../Order/OrderContextStore"; // Import the useOrder hook
+import { useOrder } from "../Order/OrderContextStore";
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
@@ -21,13 +21,13 @@ const DropDropdownlist = [
 
 const Navbar = ({ handleOrderPopup }) => {
   const navigate = useNavigate();
-  const { orders } = useOrder(); // Get orders from the context
+  const { orders } = useOrder();
 
   const handleOrderClick = () => {
     if (handleOrderPopup) {
-      handleOrderPopup(); // If popup handler is provided
+      handleOrderPopup(); 
     }
-    navigate("/orders"); // Always navigate to orders page
+    navigate("/orders"); 
   };
 
   return (

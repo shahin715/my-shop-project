@@ -13,6 +13,7 @@ import Footer from "./sections/Fotter/Fotter";
 import Bestproduct from "./sections/BestProduct/Bestproduct";
 import Womenwear from "./sections/comPages/Women-wear/womenwear";
 import Womenallproduct from "./sections/comPages/Women-wear/womenallproduct";
+import WomenProductDetail from "./sections/comPages/Women-wear/WomenProductDetail"
 import ElectronicsProductList from "./sections/comPages/Electronics/ElectronicsProductList";
 import ElectronicProductDetail from "./sections/comPages/Electronics/ElectronicsProductListDetails";
 import KidsWearProductList from "./sections/comPages/kids-wear/KidsWear";
@@ -57,6 +58,7 @@ const App = () => {
         <Route path="/kids/:id" element={<KidsProductDetail />} />
         <Route path="/womens-wear" element={<Womenwear />} />
         <Route path="/womenallproduct" element={<Womenallproduct />} />
+        <Route path="/women/:id" element={<WomenProductDetail />} />
         <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
         <Route path="/electronics/:id" element={<ElectronicProductDetail />} />
         
