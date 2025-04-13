@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import KidsWear from "./KidsWearData";
+import KidsWear from "../../comPages/kids-wear/KidsWearData";
 import { useOrder } from "../../Order/OrderContextStore"; // ✅ Import context
 
 const KidsProductDetail = () => {
   const { id } = useParams();
   const product = KidsWear.find((item) => item.id === parseInt(id));
   const [quantity, setQuantity] = useState(1);
-  const { addOrder } = useOrder(); // ✅ Use context
+  const { addOrder } = useOrder(); // ✅ Use addOrder from context
 
   if (!product) {
     return <div className="text-center mt-20">Product not found</div>;
@@ -16,19 +16,23 @@ const KidsProductDetail = () => {
   const handleAddToCart = () => {
     const newOrder = {
       id: product.id,
-      title: product.title,
       img: product.img,
-      price: product.price || 20, // Set a price if not present
+      title: product.title,
+      price: product.price || 10, // fallback price
       quantity: quantity,
     };
 
-    addOrder(newOrder); // ✅ Add to context
-    alert(`Added ${quantity} of ${product.title} to cart`);
+    addOrder(newOrder);
+    alert(`Order added: ${quantity} x ${product.title}`);
   };
 
-  const handleIncrement = () => setQuantity((prev) => prev + 1);
-  const handleDecrement = () =>
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  };
 
   return (
     <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -39,23 +43,22 @@ const KidsProductDetail = () => {
       />
       <div>
         <h2 className="text-3xl font-bold mb-2">{product.title}</h2>
-        <p className="text-sm text-gray-500">
+
+        <p className="text-sm text-gray-600">
+          <span className="font-semibold">Product Code:</span> #{product.id}
+        </p>
+        <p className="text-sm text-green-600 mb-2">
+          <span className="font-semibold">Availability:</span> In Stock
+        </p>
+        <p className="text-sm text-gray-500 mb-1">
           Brand: {product.brand || "Unknown"}
         </p>
+
         <p className="mt-2 text-xl font-bold text-red-600">
-          ${product.price || 20}
+          Tk {product.price}
         </p>
 
-        <div className="mt-4 space-y-2">
-          <p>
-            <span className="font-semibold">Product Code:</span>{" "}
-            {product.code || "N/A"}
-          </p>
-          <p>
-            <span className="font-semibold">Availability:</span>{" "}
-            {product.availability || "In Stock"}
-          </p>
-        </div>
+        <p className="mt-4 text-gray-700">{product.description}</p>
 
         <div className="flex items-center mt-4">
           <button
@@ -87,4 +90,6 @@ const KidsProductDetail = () => {
 };
 
 export default KidsProductDetail;
+
+
 

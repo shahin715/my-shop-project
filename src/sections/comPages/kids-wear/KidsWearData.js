@@ -5,10 +5,41 @@ import Img4 from "../../../assets/images/kid4.jpg";
 import Img5 from "../../../assets/images/kid5.jpg";
 
 const KidsWear = [
-  { id: 1, img: Img1, title: 'Kids Wear 1', price: "Tk 1,299", description: "Stylish kids wear with comfort." },
-  { id: 2, img: Img2, title: 'Kids Wear 2', price: "Tk 1,499", description: "Trendy and comfortable kids wear." },
-  { id: 3, img: Img3, title: 'Kids Wear 3', price: "Tk 1,199", description: "Perfect for all occasions." },
-  { id: 4, img: Img4, title: 'Kids Wear 4', price: "Tk 1,399", description: "Soft and durable fabric." },
-  { id: 5, img: Img5, title: 'Kids Wear 5', price: "Tk 1,599", description: "Fashionable and cozy." },
+  {
+    id: 1,
+    img: Img1,
+    title: "Kids Wear 1",
+    price: 1299,
+    description: "Stylish kids wear with comfort.",
+  },
+  {
+    id: 2,
+    img: Img2,
+    title: "Kids Wear 2",
+    price: 1499,
+    description: "Trendy and comfortable kids wear.",
+  },
+  {
+    id: 3,
+    img: Img3,
+    title: "Kids Wear 3",
+    price: 1199,
+    description: "Perfect for all occasions.",
+  },
+  {
+    id: 4,
+    img: Img4,
+    title: "Kids Wear 4",
+    price: 1399,
+    description: "Soft and durable fabric.",
+  },
+  {
+    id: 5,
+    img: Img5,
+    title: "Kids Wear 5",
+    price: 1599,
+    description: "Fashionable and cozy.",
+  },
 ];
+
 export default KidsWear;

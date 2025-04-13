@@ -8,12 +8,8 @@ export const OrderProvider = ({ children }) => {
     setOrders((prev) => [...prev, product]);
   };
 
-  const removeOrder = (productId) => {
-    setOrders((prev) => prev.filter((item) => item.id !== productId));
-  };
-
   return (
-    <OrderContext.Provider value={{ orders, addOrder, removeOrder }}>
+    <OrderContext.Provider value={{ orders, addOrder, setOrders }}>
       {children}
     </OrderContext.Provider>
   );
