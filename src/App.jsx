@@ -59,6 +59,7 @@ const App = () => {
         <Route path="/womenallproduct" element={<Womenallproduct />} />
         <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
         <Route path="/electronics/:id" element={<ElectronicProductDetail />} />
+        
       </Routes>
 
       <Popup />

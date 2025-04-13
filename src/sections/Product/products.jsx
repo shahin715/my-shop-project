@@ -1,5 +1,6 @@
 import React from 'react'
 import {FaStar} from "react-icons/fa6"
+import { Link } from "react-router-dom";
 import Img1 from "../../assets/images/product1.webp";
 import Img2 from "../../assets/images/product2.jpg";
 import Img3 from "../../assets/images/product3.jpg";
@@ -97,9 +98,11 @@ const Products = () => {
           </div>
           {/* view all button */}
           <div className="flex justify-center">
+          <Link to="/Womenallproduct">
             <button className="text-center mt-10 cursor-pointer bg-primary text-white py-1 px-5 rounded-md">
-              View All Button
+              View All 
             </button>
+          </Link>
           </div>
         </div>
       </div>
