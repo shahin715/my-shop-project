@@ -18,12 +18,20 @@ const ElectronicProductDetail = () => {
       id: product.id,
       title: product.title,
       img: product.img,
-      price: product.price || "Tk 20,000",
+      price: parseFloat(product.price) || 20000,
       quantity: quantity,
     };
 
     addOrder(newOrder);
-    alert(`Added ${quantity} of ${product.title} to cart`);
+    alert(`Order added: ${quantity} x ${product.title}`);
+  };
+
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   };
 
   return (
@@ -35,30 +43,28 @@ const ElectronicProductDetail = () => {
       />
       <div>
         <h2 className="text-3xl font-bold mb-2">{product.title}</h2>
-        <p className="text-sm text-gray-500">
+
+        <p className="text-sm text-gray-600">
+          <span className="font-semibold">Product Code:</span>{" "}
+          {product.code || `#${product.id}`}
+        </p>
+        <p className="text-sm text-green-600 mb-2">
+          <span className="font-semibold">Availability:</span>{" "}
+          {product.availability || "In Stock"}
+        </p>
+        <p className="text-sm text-gray-500 mb-1">
           Brand: {product.brand || "Unknown"}
         </p>
+
         <p className="mt-2 text-xl font-bold text-red-600">
           {product.price || "Tk 20,000"}
         </p>
-        <p className="mt-2 text-gray-700 dark:text-gray-300">
-          {product.description}
-        </p>
 
-        <div className="mt-4 space-y-2">
-          <p>
-            <span className="font-semibold">Product Code:</span>{" "}
-            {product.code || "N/A"}
-          </p>
-          <p>
-            <span className="font-semibold">Availability:</span>{" "}
-            {product.availability || "In Stock"}
-          </p>
-        </div>
+        <p className="mt-4 text-gray-700">{product.description}</p>
 
         <div className="flex items-center mt-4">
           <button
-            onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
+            onClick={handleDecrement}
             className="px-3 py-1 bg-gray-300 text-gray-700 font-bold rounded-l-md hover:bg-gray-400"
           >
             -
@@ -67,7 +73,7 @@ const ElectronicProductDetail = () => {
             {quantity}
           </span>
           <button
-            onClick={() => setQuantity((prev) => prev + 1)}
+            onClick={handleIncrement}
             className="px-3 py-1 bg-gray-300 text-gray-700 font-bold rounded-r-md hover:bg-gray-400"
           >
             +
@@ -86,3 +92,4 @@ const ElectronicProductDetail = () => {
 };
 
 export default ElectronicProductDetail;
+
