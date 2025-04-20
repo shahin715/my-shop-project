@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useOrder } from "./OrderContextStore";
 
 const Checkout = () => {
   const [contact, setContact] = useState({
@@ -9,12 +11,25 @@ const Checkout = () => {
 
   const [delivery, setDelivery] = useState("home");
   const [payment, setPayment] = useState("cod");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const { orders } = useOrder();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can handle final order logic here
-    console.log("Order Submitted", { contact, delivery, payment });
-    alert("Order placed successfully!");
+
+    // Optional: send order data to your fake API here
+    const orderData = {
+      contact,
+      delivery,
+      payment,
+      orders,
+    };
+
+    console.log("Order Data:", orderData);
+
+    // Redirect to Thank You page
+    navigate("/thankyou");
   };
 
   return (
@@ -116,3 +131,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
+

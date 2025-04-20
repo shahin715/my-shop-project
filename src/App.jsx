@@ -20,6 +20,7 @@ import KidsWearProductList from "./sections/comPages/kids-wear/KidsWear";
 import KidsProductDetail from "./sections/comPages/kids-wear/KidsProductDetail";
 import Order from "./sections/Order/order";
 import Checkout from "./sections/Order/Checkout"
+import ThankYou from "./sections/Order/ThankYou";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
@@ -63,6 +64,7 @@ const App = () => {
         <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
         <Route path="/electronics/:id" element={<ElectronicProductDetail />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/thankyou" element={<ThankYou />} />
       </Routes>
 
       <Popup />
