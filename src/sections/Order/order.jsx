@@ -1,7 +1,9 @@
 import { useOrder } from "./OrderContextStore";
+import { useNavigate } from "react-router-dom";
 
 const Order = () => {
   const { orders, setOrders } = useOrder();
+  const navigate = useNavigate();
 
   // ✅ Calculate the total price correctly
   const totalPrice = orders.reduce((acc, item) => {
@@ -51,6 +53,13 @@ const Order = () => {
 
           <div className="mt-6 text-xl font-semibold">
             <p>Total Price: ${totalPrice.toFixed(2)}</p>
+
+            <button
+              onClick={() => navigate("/checkout")}
+              className="mt-4 bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-all duration-200"
+            >
+              Checkout Now
+            </button>
           </div>
         </>
       )}
@@ -59,5 +68,6 @@ const Order = () => {
 };
 
 export default Order;
+
 
 
