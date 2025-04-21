@@ -7,6 +7,7 @@ import Navbar from "./sections/Navbar/Navbar";
 import Banner from "./sections/Banner/banner";
 import Hero from "./sections/Hero/hero";
 import Products from "./sections/Product/products";
+import ProductDetail from "./sections/Product/ProductDetail";
 import TopProducts from "./sections/TopProduct/TopProducts";
 import Popup from "./sections/Popup/Popup";
 import Footer from "./sections/Fotter/Fotter";
@@ -67,6 +68,7 @@ const App = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/thankyou" element={<ThankYou />} />
         <Route path="/topproduct/:id" element={<TopProductDetail />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
 
       </Routes>
 
