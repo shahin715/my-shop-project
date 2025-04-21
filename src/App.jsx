@@ -23,6 +23,8 @@ import Order from "./sections/Order/order";
 import Checkout from "./sections/Order/Checkout"
 import ThankYou from "./sections/Order/ThankYou";
 import TopProductDetail from "./sections/TopProduct/TopProductDetail";
+import MensWear from "./sections/comPages/mens-wear/MensWear";
+import MensWearDetail from "./sections/comPages/mens-wear/MensWearDetail";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
@@ -69,6 +71,8 @@ const App = () => {
         <Route path="/thankyou" element={<ThankYou />} />
         <Route path="/topproduct/:id" element={<TopProductDetail />} />
         <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/menswear" element={<MensWear />} />
+        <Route path="/menswear/:id" element={<MensWearDetail />} />
 
       </Routes>
 
