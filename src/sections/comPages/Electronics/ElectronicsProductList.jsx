@@ -6,7 +6,7 @@ import Img3 from "../../../assets/images/TV.jpeg";
 import Img4 from "../../../assets/images/headphone.webp";
 import Img5 from "../../../assets/images/Gaming.jpeg";
 
-const Electronic = [
+const Electronics = [
   { id: 1, img: Img1, title: "Smartphone" },
   { id: 2, img: Img2, title: "Laptop" },
   { id: 3, img: Img3, title: "Smart TV" },
@@ -16,29 +16,38 @@ const Electronic = [
 
 const ElectronicsProductList = () => {
   return (
-    <div className="mt-14 mb-12">
-      <div className="text-center mb-10 max-w-[600px] mx-auto">
-        <h1 data-aos="fade-up" className="text-3xl font-bold">
+    <section className="mt-14 mb-20 px-4 sm:px-8">
+      <div className="text-center mb-12">
+        <h1
+          data-aos="fade-up"
+          className="text-4xl font-extrabold tracking-tight text-white"
+        >
           Electronics Collection
         </h1>
+        <p className="text-gray-500 mt-2">Explore our top tech products</p>
       </div>
-      <div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
-          {Electronic.map((product) => (
-           <Link to={`/electronics/${product.id}`} key={product.id}>
-              <div className="text-center cursor-pointer">
-                <img
-                  src={product.img}
-                  alt={product.title}
-                  className="h-[220px] w-[150px] object-cover rounded-md"
-                />
-                <h3 className="font-semibold mt-3">{product.title}</h3>
-              </div>
-            </Link>
-          ))}
-        </div>
+
+      <div
+        className="grid gap-8 sm:gap-6 md:gap-10 place-items-center"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}
+      >
+        {Electronics.map((product) => (
+          <Link to={`/electronics/${product.id}`} key={product.id}>
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-transform transform hover:scale-105 p-4 text-center">
+              <img
+                src={product.img}
+                alt={product.title}
+                loading="lazy"
+                className="h-48 w-full object-cover rounded-xl mb-4"
+              />
+              <h3 className="text-lg font-semibold text-gray-700">
+                {product.title}
+              </h3>
+            </div>
+          </Link>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 
