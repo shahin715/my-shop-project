@@ -17,7 +17,7 @@ const Order = () => {
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 min-h-screen flex flex-col justify-start px-4 sm:px-8 bg-gray">
       <h1 className="text-3xl font-bold mb-4">Your Orders</h1>
       {orders.length === 0 ? (
         <p>No orders yet.</p>
