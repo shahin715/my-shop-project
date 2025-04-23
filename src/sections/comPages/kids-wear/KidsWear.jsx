@@ -17,15 +17,21 @@ const KidsWear = [
 
 const KidsWearProductList = () => {
     return (
-        <div className="mt-14 mb-12">
+        <div className="mt-14 mb-14">
             <div className="text-center mb-10 max-w-[600px] mx-auto">
+            <p data-aos="fade-up" className="text-sm text-primary">
+            Top Selling Menswear for you
+          </p>
                 <h1 data-aos="fade-up" className="text-3xl font-bold">
                     Kids Wear Collection
                 </h1>
+                <p data-aos="fade-up" className="text-xs text-gray-400">
+            Explore the latest collection of stylish menswear.
+          </p>
             </div>
             <div>
                 {/* Grid for products */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5 ">
                     {KidsWear.map((product) => (
                         <Link to={`/kids/${product.id}`} key={product.id}>
                             {" "}
