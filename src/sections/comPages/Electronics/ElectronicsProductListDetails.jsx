@@ -14,11 +14,14 @@ const ElectronicProductDetail = () => {
   }
 
   const handleAddToCart = () => {
+    
+    const cleanedPrice = Number(product.price.replace(/[^\d.-]/g, ""));
+
     const newOrder = {
       id: product.id,
       title: product.title,
       img: product.img,
-      price: parseFloat(product.price) || 20000,
+      price: cleanedPrice,
       quantity: quantity,
     };
 
@@ -57,7 +60,7 @@ const ElectronicProductDetail = () => {
         </p>
 
         <p className="mt-2 text-xl font-bold text-red-600">
-          {product.price || "Tk 20,000"}
+          {product.price}
         </p>
 
         <p className="mt-4 text-gray-700">{product.description}</p>
@@ -92,4 +95,5 @@ const ElectronicProductDetail = () => {
 };
 
 export default ElectronicProductDetail;
+
 

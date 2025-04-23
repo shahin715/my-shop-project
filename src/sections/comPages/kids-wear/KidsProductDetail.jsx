@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import KidsWear from "../../comPages/kids-wear/KidsWearData";
-import { useOrder } from "../../Order/OrderContextStore"; // ✅ Import context
+import { useOrder } from "../../Order/OrderContextStore"; 
 
 const KidsProductDetail = () => {
   const { id } = useParams();
   const product = KidsWear.find((item) => item.id === parseInt(id));
   const [quantity, setQuantity] = useState(1);
-  const { addOrder } = useOrder(); // ✅ Use addOrder from context
+  const { addOrder } = useOrder(); 
 
   if (!product) {
     return <div className="text-center mt-20">Product not found</div>;
@@ -18,7 +18,7 @@ const KidsProductDetail = () => {
       id: product.id,
       img: product.img,
       title: product.title,
-      price: product.price || 10, // fallback price
+      price: product.price || 10, 
       quantity: quantity,
     };
 
