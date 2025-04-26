@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
@@ -22,12 +22,30 @@ const DropDropdownlist = [
 const Navbar = ({ handleOrderPopup }) => {
   const navigate = useNavigate();
   const { orders } = useOrder();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const handleOrderClick = () => {
     if (handleOrderPopup) {
-      handleOrderPopup(); 
+      handleOrderPopup();
     }
-    navigate("/orders"); 
+    navigate("/orders");
+  };
+
+  const handleLogin = () => {
+    navigate("/login"); // ⬅️ Go to login page
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
   };
 
   return (
@@ -71,8 +89,25 @@ const Navbar = ({ handleOrderPopup }) => {
               <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
             </button>
 
-            {/* Dark Mode Switch */}
-            {/* <DarkMode /> */}
+            {/* Login/Logout Button */}
+            {user ? (
+              <div className="flex items-center gap-3">
+                <span className="hidden sm:block font-semibold">{user.email}</span>
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-full transition-all duration-200"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={handleLogin}
+                className="bg-green-500 hover:bg-green-600 text-white py-1 px-4 rounded-full transition-all duration-200"
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -120,10 +155,11 @@ const Navbar = ({ handleOrderPopup }) => {
 };
 
 Navbar.defaultProps = {
-  handleOrderPopup: null, 
+  handleOrderPopup: null,
 };
 
 export default Navbar;
+
 
 
 

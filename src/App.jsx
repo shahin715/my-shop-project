@@ -4,6 +4,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import Navbar from "./sections/Navbar/Navbar";
+import Signup from "./sections/Navbar/Signup"
+import Login from "./sections/Navbar/Login"
 import Banner from "./sections/Banner/banner";
 import Hero from "./sections/Hero/hero";
 import Products from "./sections/Product/products";
@@ -60,6 +62,8 @@ const App = () => {
           }
         />
         <Route path="/orders" element={<Order />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/kids-wear" element={<KidsWearProductList />} />
         <Route path="/kids/:id" element={<KidsProductDetail />} />
         <Route path="/womens-wear" element={<Womenwear />} />

@@ -15,17 +15,30 @@ const Order = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 px-4 py-10 sm:px-8">
-      <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 px-4 py-10 sm:px-8">
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="flex justify-between mb-2">
+            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Step 1 of 3</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Order Summary</span>
+          </div>
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+            <div className="bg-green-500 h-2 rounded-full" style={{ width: "33%" }}></div>
+          </div>
+        </div>
+
+        {/* Order Content */}
+        <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
           Your Orders
         </h1>
 
         {orders.length === 0 ? (
-          <p className="text-center text-gray-500">No orders yet.</p>
+          <p className="text-center text-gray-500 dark:text-gray-400">No orders yet.</p>
         ) : (
           <>
-            <ul className="divide-y divide-gray-200">
+            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
               {orders.map((item, index) => (
                 <li
                   key={index}
@@ -38,16 +51,16 @@ const Order = () => {
                       className="h-24 w-24 object-cover rounded border"
                     />
                     <div>
-                      <h2 className="text-lg font-semibold text-gray-800">
+                      <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
                         {item.title}
                       </h2>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         Quantity: {item.quantity}
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         Price: ${item.price}
                       </p>
-                      <p className="text-sm font-semibold text-gray-700">
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                         Total: ${(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
@@ -62,8 +75,8 @@ const Order = () => {
               ))}
             </ul>
 
-            <div className="mt-6 border-t pt-4 text-right">
-              <p className="text-xl font-bold text-gray-800">
+            <div className="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4 text-right">
+              <p className="text-xl font-bold text-gray-800 dark:text-white">
                 Total Price: ${totalPrice.toFixed(2)}
               </p>
               <button
@@ -81,6 +94,8 @@ const Order = () => {
 };
 
 export default Order;
+
+
 
 
 
