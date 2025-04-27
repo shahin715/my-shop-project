@@ -1,51 +1,56 @@
 import React from "react";
-import { FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import MensWearData from "./mensWearData";
+import { Helmet } from "react-helmet-async";
+import MensWearData from "./mensWearData"; // Assuming you already have this data imported
 
 const MensWear = () => {
   return (
-    <div className="mt-14 mb-12">
-      <div className="">
-        <div className="text-center mb-10 max-w-[600px] mx-auto">
-          <p data-aos="fade-up" className="text-sm text-primary">
-            Top Selling Menswear for you
-          </p>
-          <h1 data-aos="fade-up" className="text-3xl font-bold">
-            Mens Wear
+    <>
+      {/* Dynamic Helmet for the Product List Page */}
+      <Helmet>
+        <title>Menswear Collection - Stylish Outfits for Men</title>
+        <meta name="description" content="Shop the latest menswear collection, including denim shirts, casual shirts, and T-shirts for every occasion." />
+      </Helmet>
+
+      <section className="mt-14 mb-20 px-4 sm:px-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-extrabold tracking-tight text-black dark:text-white">
+            Menswear Collection
           </h1>
-          <p data-aos="fade-up" className="text-xs text-gray-400">
-            Explore the latest collection of stylish menswear.
-          </p>
+          <p className="text-gray-500 mt-2 dark:text-gray-400">Explore our top stylish menswear outfits</p>
         </div>
-        <div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
-            {MensWearData.map((data) => (
-              <Link
-                key={data.id}
-                to={`/menswear/${data.id}`}
-                data-aos="fade-up"
-                className="space-y-3"
-              >
+
+        <div
+          className="grid gap-8 sm:gap-6 md:gap-10 place-items-center"
+          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}
+        >
+          {MensWearData.map((product) => (
+            <Link to={`/menswear/${product.id}`} key={product.id}>
+              {/* Dynamic Helmet for Each Product */}
+              <Helmet>
+                <title>{product.title} - Best Price</title>
+                <meta name="description" content={product.description} />
+                <meta property="og:title" content={product.title} />
+                <meta property="og:description" content={product.description} />
+                <meta property="og:image" content={product.img} />
+              </Helmet>
+
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-transform transform hover:scale-105 p-4 text-center">
                 <img
-                  src={data.img}
-                  alt={data.title}
-                  className="h-[220px] w-[150px] object-cover rounded-md cursor-pointer"
+                  src={product.img}
+                  alt={product.title}
+                  loading="lazy"
+                  className="h-48 w-full object-contain rounded-xl mb-4"
                 />
-                <div>
-                  <h3 className="font-semibold">{data.title}</h3>
-                  <p className="text-sm text-gray-600">{data.color}</p>
-                  <div className="flex items-center gap-1">
-                    <FaStar className="text-yellow-400" />
-                    <span>{data.rating}</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-white">{product.title}</h3>
+                <p className="text-gray-500 dark:text-gray-300">{product.description}</p>
+                <p className="text-gray-600 dark:text-gray-400">{product.color}</p>
+              </div>
+            </Link>
+          ))}
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 
