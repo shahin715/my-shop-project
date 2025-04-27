@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; // ✅ Helmet import
 import Electronic from "./ElectronicData";
 import { useOrder } from "../../Order/OrderContextStore";
 import { FaStar, FaRegStar } from "react-icons/fa";
@@ -11,7 +12,15 @@ const ElectronicProductDetail = () => {
   const { addOrder } = useOrder();
 
   if (!product) {
-    return <div className="text-center mt-20">Product not found</div>;
+    return (
+      <div className="text-center mt-20">
+        <Helmet>
+          <title>Product Not Found | Electronics</title>
+          <meta name="robots" content="noindex" />
+        </Helmet>
+        Product not found
+      </div>
+    );
   }
 
   const handleAddToCart = () => {
@@ -37,6 +46,16 @@ const ElectronicProductDetail = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+
+      {/* ✅ Helmet Title, Description set dynamically */}
+      <Helmet>
+        <title>{product.title} - Best Price in Bangladesh</title>
+        <meta name="description" content={product.description} />
+        <meta property="og:title" content={product.title} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={product.img} />
+      </Helmet>
+
       {/* Image */}
       <div className="bg-white p-6 rounded-lg shadow-md">
         <img
@@ -48,6 +67,7 @@ const ElectronicProductDetail = () => {
 
       {/* Details */}
       <div className="flex flex-col justify-between">
+        {/* (same as your code...) */}
         <div>
           <h2 className="text-3xl font-bold mb-2 text-gray-900">
             {product.title}
@@ -71,20 +91,17 @@ const ElectronicProductDetail = () => {
               In Stock
             </span>
           </div>
-          <p className="text-xl font-bold text-red-600 mb-2">
-            {product.price}
-          </p>
+          <p className="text-xl font-bold text-red-600 mb-2">{product.price}</p>
 
           <p className="text-gray-700 mb-4">{product.description}</p>
 
-          {/* Features */}
           <ul className="mb-6 space-y-2">
             <li className="text-sm text-gray-600">✅ 1-Year Warranty</li>
             <li className="text-sm text-gray-600">✅ Free Shipping</li>
             <li className="text-sm text-gray-600">✅ 24/7 Customer Support</li>
           </ul>
 
-          {/* Quantity */}
+          {/* Quantity Controller */}
           <div className="flex items-center mb-4">
             <button
               onClick={handleDecrement}
@@ -112,7 +129,7 @@ const ElectronicProductDetail = () => {
           </button>
         </div>
 
-        {/* Reviews Preview */}
+        {/* Customer Reviews */}
         <div className="mt-10 border-t pt-4">
           <h4 className="text-lg font-semibold mb-2">What customers say</h4>
           <p className="text-sm text-gray-600 italic mb-1">
@@ -123,11 +140,13 @@ const ElectronicProductDetail = () => {
           </p>
         </div>
       </div>
+
     </div>
   );
 };
 
 export default ElectronicProductDetail;
+
 
 
 
