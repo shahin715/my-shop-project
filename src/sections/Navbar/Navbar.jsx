@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useOrder } from "../Order/OrderContextStore";
+import { AuthContext } from "../../sections/Navbar/AuthContext"; // 👈 Import AuthContext
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
@@ -20,16 +21,9 @@ const DropDropdownlist = [
 ];
 
 const Navbar = ({ handleOrderPopup }) => {
-  const navigate = useNavigate();
+  const { user, logout } = useContext(AuthContext); // 👈 Context থেকে user আর logout নিচ্ছি
   const { orders } = useOrder();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+  const navigate = useNavigate();
 
   const handleOrderClick = () => {
     if (handleOrderPopup) {
@@ -39,20 +33,22 @@ const Navbar = ({ handleOrderPopup }) => {
   };
 
   const handleLogin = () => {
-    navigate("/login"); // ⬅️ Go to login page
+    navigate("/login");
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    navigate("/");
+    logout(); // 👈 Context logout ইউজ করছি
+    navigate("/login");
   };
 
   return (
     <div className="shadow-md bg-white dark:bg-slate-800 dark:text-white duration-200 relative z-40">
+      
       {/* Upper Navbar */}
       <div className="bg-[#4263eb]/40 py-2">
         <div className="container flex justify-between items-center">
+          
+          {/* Logo */}
           <div>
             <Link to="/" className="font-bold text-xl flex items-center gap-1">
               <FiShoppingBag size="30" />
@@ -60,15 +56,17 @@ const Navbar = ({ handleOrderPopup }) => {
             </Link>
           </div>
 
-          {/* Search Bar */}
+          {/* Search Bar + Order + Login/Logout */}
           <div className="flex items-center gap-4">
+            
+            {/* Search Input */}
             <div className="relative group hidden sm:block">
               <input
                 type="text"
                 placeholder="Search"
                 aria-label="Search products"
                 className="w-[200px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-lg border border-gray-300 py-1 px-2
-                text-sm focus:outline-none focus:border-[#4263eb] dark:border-gray-500 dark:bg-slate-800"
+                text-sm focus:outline-none focus:border-[#4263eb] dark:border-gray-500 dark:bg-slate-800 dark:text-white"
               />
               <IoMdSearch className="text-slate-800 dark:text-white group-hover:text-[#4263eb] absolute top-1/2 -translate-y-1/2 right-3" />
             </div>
@@ -89,17 +87,17 @@ const Navbar = ({ handleOrderPopup }) => {
               <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
             </button>
 
-            {/* Login/Logout Button */}
+            {/* Login / Logout */}
             {user ? (
-              <div className="flex items-center gap-3">
-                <span className="hidden sm:block font-semibold">{user.email}</span>
-                <button
-                  onClick={handleLogout}
-                  className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-full transition-all duration-200"
-                >
-                  Logout
-                </button>
-              </div>
+             <div className="flex items-center gap-3">
+             <button
+               onClick={handleLogout}
+               className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-full transition-all duration-200"
+             >
+               Logout
+             </button>
+           </div>
+           
             ) : (
               <button
                 onClick={handleLogin}
@@ -109,6 +107,7 @@ const Navbar = ({ handleOrderPopup }) => {
               </button>
             )}
           </div>
+
         </div>
       </div>
 
@@ -125,7 +124,8 @@ const Navbar = ({ handleOrderPopup }) => {
               </Link>
             </li>
           ))}
-          {/* Dropdown Menu */}
+          
+          {/* Dropdown */}
           <li className="group relative cursor-pointer">
             <a href="#" className="flex items-center gap-[2px] py-2">
               Trending Products
@@ -133,7 +133,7 @@ const Navbar = ({ handleOrderPopup }) => {
                 <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
               </span>
             </a>
-            <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
+            <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white dark:bg-slate-700 p-2 text-black dark:text-white shadow-md">
               <ul>
                 {DropDropdownlist.map((data) => (
                   <li key={data.id}>
@@ -148,8 +148,10 @@ const Navbar = ({ handleOrderPopup }) => {
               </ul>
             </div>
           </li>
+
         </ul>
       </div>
+
     </div>
   );
 };

@@ -3,9 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
 import Navbar from "./sections/Navbar/Navbar";
-import Signup from "./sections/Navbar/Signup"
-import Login from "./sections/Navbar/Login"
+import Signup from "./sections/Navbar/Signup";
+import Login from "./sections/Navbar/Login";
 import Banner from "./sections/Banner/banner";
 import Hero from "./sections/Hero/hero";
 import Products from "./sections/Product/products";
@@ -16,17 +17,18 @@ import Footer from "./sections/Fotter/Fotter";
 import Bestproduct from "./sections/BestProduct/Bestproduct";
 import Womenwear from "./sections/comPages/Women-wear/womenwear";
 import Womenallproduct from "./sections/comPages/Women-wear/womenallproduct";
-import WomenProductDetail from "./sections/comPages/Women-wear/WomenProductDetail"
+import WomenProductDetail from "./sections/comPages/Women-wear/WomenProductDetail";
 import ElectronicsProductList from "./sections/comPages/Electronics/ElectronicsProductList";
 import ElectronicProductDetail from "./sections/comPages/Electronics/ElectronicsProductListDetails";
 import KidsWearProductList from "./sections/comPages/kids-wear/KidsWear";
 import KidsProductDetail from "./sections/comPages/kids-wear/KidsProductDetail";
 import Order from "./sections/Order/order";
-import Checkout from "./sections/Order/Checkout"
+import Checkout from "./sections/Order/Checkout";
 import ThankYou from "./sections/Order/ThankYou";
 import TopProductDetail from "./sections/TopProduct/TopProductDetail";
 import MensWear from "./sections/comPages/mens-wear/MensWear";
 import MensWearDetail from "./sections/comPages/mens-wear/MensWearDetail";
+import { AuthProvider } from "./sections/Navbar/AuthProvider"; // ✅ Context Import
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
@@ -45,48 +47,50 @@ const App = () => {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
-      <Navbar handleOrderPopup={handleOrderPopup} />
+    <AuthProvider> {/* ✅ Wrap your whole app inside AuthProvider */}
+      <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
+        <Navbar handleOrderPopup={handleOrderPopup} />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Banner />
-              <Hero handleOrderPopup={handleOrderPopup} />
-              <Products />
-              <TopProducts handleOrderPopup={handleOrderPopup} />
-              <Bestproduct />
-            </>
-          }
-        />
-        <Route path="/orders" element={<Order />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/kids-wear" element={<KidsWearProductList />} />
-        <Route path="/kids/:id" element={<KidsProductDetail />} />
-        <Route path="/womens-wear" element={<Womenwear />} />
-        <Route path="/womenallproduct" element={<Womenallproduct />} />
-        <Route path="/women/:id" element={<WomenProductDetail />} />
-        <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
-        <Route path="/electronics/:id" element={<ElectronicProductDetail />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/thankyou" element={<ThankYou />} />
-        <Route path="/topproduct/:id" element={<TopProductDetail />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/menswear" element={<MensWear />} />
-        <Route path="/menswear/:id" element={<MensWearDetail />} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Banner />
+                <Hero handleOrderPopup={handleOrderPopup} />
+                <Products />
+                <TopProducts handleOrderPopup={handleOrderPopup} />
+                <Bestproduct />
+              </>
+            }
+          />
+          <Route path="/orders" element={<Order />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/kids-wear" element={<KidsWearProductList />} />
+          <Route path="/kids/:id" element={<KidsProductDetail />} />
+          <Route path="/womens-wear" element={<Womenwear />} />
+          <Route path="/womenallproduct" element={<Womenallproduct />} />
+          <Route path="/women/:id" element={<WomenProductDetail />} />
+          <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
+          <Route path="/electronics/:id" element={<ElectronicProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/thankyou" element={<ThankYou />} />
+          <Route path="/topproduct/:id" element={<TopProductDetail />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/menswear" element={<MensWear />} />
+          <Route path="/menswear/:id" element={<MensWearDetail />} />
+        </Routes>
 
-      </Routes>
-
-      <Popup />
-      <Footer />
-    </div>
+        <Popup />
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 };
 
 export default App;
+
 
 
 
