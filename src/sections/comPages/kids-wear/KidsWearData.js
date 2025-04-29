@@ -17,7 +17,7 @@ const KidsWear = [
     img: Img2,
     title: "Kids Wear 2",
     price: 1499,
-    description: "Trendy and comfortable kids wear.",
+    description: "Trendy and comfortable.",
   },
   {
     id: 3,
@@ -43,3 +43,4 @@ const KidsWear = [
 ];
 
 export default KidsWear;
+
