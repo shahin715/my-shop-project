@@ -47,7 +47,7 @@ const Products = () => {
 
           <div className="flex justify-center">
             <Link to="/Womenallproduct">
-              <button className="text-center mt-10 cursor-pointer bg-primary text-white py-1 px-5 rounded-md">
+              <button className="text-center mt-10 cursor-pointer bg-primary  text-black dark:text-white py-1 px-5 rounded-md">
                 View All
               </button>
             </Link>

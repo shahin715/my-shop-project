@@ -14,6 +14,17 @@ const ThankYou = () => {
         transition={{ duration: 0.6 }}
         className="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-xl max-w-2xl w-full text-center"
       >
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="flex justify-between mb-2">
+            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Step 3 of 3</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Order Complete</span>
+          </div>
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+            <div className="bg-green-500 h-2 rounded-full" style={{ width: "100%" }}></div>
+          </div>
+        </div>
+
         {/* Success Icon */}
         <CheckCircle className="text-green-500 w-20 h-20 mx-auto mb-4" />
         <h1 className="text-4xl font-bold text-green-700 dark:text-green-400 mb-2">
@@ -33,16 +44,9 @@ const ThankYou = () => {
                   key={index}
                   className="flex items-center justify-between p-3 border rounded-lg bg-gray-50 dark:bg-gray-700"
                 >
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-14 h-14 object-cover rounded-lg"
-                    />
-                    <div>
-                      <h3 className="text-md font-semibold text-gray-800 dark:text-white">{item.title}</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Qty: {item.quantity || 1}</p>
-                    </div>
+                  <div>
+                    <h3 className="text-md font-semibold text-gray-800 dark:text-white">{item.title}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Qty: {item.quantity || 1}</p>
                   </div>
                   <p className="text-gray-800 dark:text-white font-medium">${item.price}</p>
                 </li>
@@ -65,7 +69,7 @@ const ThankYou = () => {
             Back to Home
           </Link>
           <Link
-            to="/electronics"
+            to="/"
             className="border border-blue-600 hover:bg-blue-100 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-400 px-6 py-2 rounded-lg transition-all"
           >
             Continue Shopping
@@ -77,3 +81,4 @@ const ThankYou = () => {
 };
 
 export default ThankYou;
+

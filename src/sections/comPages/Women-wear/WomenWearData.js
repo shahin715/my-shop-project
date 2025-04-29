@@ -1,4 +1,4 @@
-// src/comPages/women-wear/WomenWearData.js
+
 
 import Img1 from "../../../assets/images/product1.webp";
 import Img2 from "../../../assets/images/product2.jpg";
@@ -9,7 +9,7 @@ import Img6 from "../../../assets/images/product6.jpg";
 import Img7 from "../../../assets/images/product7.jpg";
 import Img8 from "../../../assets/images/product8.jpg";
 import Img9 from "../../../assets/images/product9.jpg";
-import Img10 from "../../../assets/images/product10.jpg";
+
 
 const WomenWear = [
   {
@@ -102,16 +102,7 @@ const WomenWear = [
     code: "WM009",
     availability: "In Stock",
   },
-  {
-    id: 10,
-    img: Img10,
-    title: "Wrap Midi Dress",
-    description: "Elegant and flattering wrap-style dress for all body types.",
-    price: 2850,
-    brand: "Everyday Luxe",
-    code: "WM010",
-    availability: "In Stock",
-  },
+  
 ];
 
 export default WomenWear;
