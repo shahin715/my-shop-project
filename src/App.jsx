@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
 import Navbar from "./sections/Navbar/Navbar";
 import Signup from "./sections/Navbar/Signup";
 import Login from "./sections/Navbar/Login";
@@ -29,7 +28,6 @@ import TopProductDetail from "./sections/TopProduct/TopProductDetail";
 import MensWear from "./sections/comPages/mens-wear/MensWear";
 import MensWearDetail from "./sections/comPages/mens-wear/MensWearDetail";
 import { AuthProvider } from "./sections/Navbar/AuthProvider"; 
-import NotFound from "./sections/Navbar/NotFound"; 
 import NoFound from "./sections/Navbar/noFound"
 
 const App = () => {
@@ -75,7 +73,6 @@ const App = () => {
           <Route path="/womenallproduct" element={<Womenallproduct />} />
           <Route path="/womenwear/:id" element={<WomenwearProductDetail />} />
           <Route path="/womenwear/:id" component={<ProductDetails/>} /> 
-          {/* <Route path="/womenwear/details/:id" element={<WomenAllProductDetails />} /> */}
           <Route path="/ElectronicsProductList" element={<ElectronicsProductList />} />
           <Route path="/electronics/:id" element={<ElectronicProductDetail />} />
           <Route path="/checkout" element={<Checkout />} />
@@ -84,7 +81,7 @@ const App = () => {
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/menswear" element={<MensWear />} />
           <Route path="/menswear/:id" element={<MensWearDetail />} />
-          <Route path="*" element={<NotFound />} />
+    
           <Route path="/no" element={<NoFound/>} />
         </Routes>
 
