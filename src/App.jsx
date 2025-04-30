@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import 'animate.css';
 import { Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -29,7 +30,7 @@ import MensWear from "./sections/comPages/mens-wear/MensWear";
 import MensWearDetail from "./sections/comPages/mens-wear/MensWearDetail";
 import { AuthProvider } from "./sections/Navbar/AuthProvider"; 
 import NoFound from "./sections/Navbar/noFound";
-import Error from "./sections/Navbar/Error";
+import Error from "./sections/Hero/Error";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
@@ -83,7 +84,7 @@ const App = () => {
           <Route path="/menswear" element={<MensWear />} />
           <Route path="/menswear/:id" element={<MensWearDetail />} />
           <Route path="/no" element={<NoFound/>} />
-          <Route path="/error" element={<Error />} />
+          <Route path="/error" element={<Error/>} />
           
         </Routes>
 
