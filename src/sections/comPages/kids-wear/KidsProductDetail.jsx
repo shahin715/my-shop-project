@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async"; 
-import KidsWear from "../../comPages/kids-wear/KidsWearData"; 
-import { useOrder } from "../../Order/OrderContextStore"; 
-import { FaStar, FaRegStar } from "react-icons/fa"; 
+import { Helmet } from "react-helmet-async";
+import KidsWear from "../../comPages/kids-wear/KidsWearData";
+import { useOrder } from "../../Order/OrderContextStore";
+import { FaStar, FaRegStar } from "react-icons/fa";
 
 const KidsProductDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); 
   const product = KidsWear.find((item) => item.id === parseInt(id)); 
-  const [quantity, setQuantity] = useState(1); 
+  const [quantity, setQuantity] = useState(1);
   const { addOrder } = useOrder(); 
 
   // If the product is not found, display a "Product not found" message
@@ -26,16 +26,15 @@ const KidsProductDetail = () => {
 
   // Add the product to the cart
   const handleAddToCart = () => {
-    const cleanedPrice = Number(product.price.replace(/[^\d.-]/g, "")); 
     const newOrder = {
       id: product.id,
       title: product.title,
       img: product.img,
-      price: cleanedPrice,
+      price: product.price,
       quantity: quantity,
     };
     addOrder(newOrder); 
-    alert(`Order added: ${quantity} x ${product.title}`); // Alert the user
+    alert(`Added ${quantity} of ${product.title} to cart`); 
   };
 
   // Increment the quantity
@@ -50,16 +49,16 @@ const KidsProductDetail = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-8 grid grid-cols-1 md:grid-cols-2 gap-12">
-      {/* ✅ Helmet Title, Description set dynamically */}
+      {/* Helmet for SEO */}
       <Helmet>
-        <title>{product.title} - Best Price in Bangladesh</title>
+        <title>{product.title} - Trendy Kids Wear</title>
         <meta name="description" content={product.description} />
         <meta property="og:title" content={product.title} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.img} />
       </Helmet>
 
-      {/* Image */}
+      {/* Product Image */}
       <div className="bg-white p-6 rounded-lg shadow-md">
         <img
           src={product.img}
@@ -68,7 +67,7 @@ const KidsProductDetail = () => {
         />
       </div>
 
-      {/* Details */}
+      {/* Product Details */}
       <div className="flex flex-col justify-between">
         <div>
           <h2 className="text-3xl font-bold mb-2 text-gray-900">{product.title}</h2>
@@ -92,12 +91,12 @@ const KidsProductDetail = () => {
           {/* Product Availability */}
           <div className="mb-2 text-sm">
             <span className="inline-block px-2 py-1 bg-green-100 text-green-700 rounded-md text-xs">
-              In Stock
+              {product.availability}
             </span>
           </div>
 
           {/* Product Price */}
-          <p className="text-xl font-bold text-red-600 mb-2">{product.price}</p>
+          <p className="text-xl font-bold text-red-600 mb-2">৳{product.price.toLocaleString()}</p>
 
           {/* Product Description */}
           <p className="text-gray-700 mb-4">{product.description}</p>
@@ -140,16 +139,17 @@ const KidsProductDetail = () => {
         <div className="mt-10 border-t pt-4">
           <h4 className="text-lg font-semibold mb-2">What customers say</h4>
           <p className="text-sm text-gray-600 italic mb-1">
-            "Amazing quality! Totally worth the price." — <strong>Rahim</strong>
+            "Perfect fit for my kid. Soft and comfortable!" — <strong>Ayesha</strong>
           </p>
           <p className="text-sm text-gray-600 italic">
-            "Great service and fast delivery." — <strong>Sadia</strong>
+            "Great quality and fast delivery!" — <strong>Rahim</strong>
           </p>
         </div>
       </div>
-
     </div>
   );
 };
 
 export default KidsProductDetail;
+
+
