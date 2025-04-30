@@ -139,12 +139,9 @@ const Navbar = ({ handleOrderPopup }) => {
               <ul>
                 {DropDropdownlist.map((data) => (
                   <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20"
-                    >
-                      {data.name}
-                    </a>
+                    <Link to={data.link} className="inline-block w-full rounded-md p-2 hover:bg-primary/20">
+  {data.name}
+</Link>
                   </li>
                 ))}
               </ul>
