@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
-import { FaCartShopping, FaCaretDown } from "react-icons/fa";
+import {  FaCaretDown } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
 import { FiShoppingBag } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useOrder } from "../Order/OrderContextStore";
