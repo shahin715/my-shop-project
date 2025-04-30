@@ -16,8 +16,8 @@ const Menu = [
 ];
 
 const DropDropdownlist = [
-  { id: 1, name: "Trending Products", link: "/#" },
-  { id: 2, name: "Best Selling", link: "/#" },
+  { id: 1, name: "Trending Products", link: "/not" },
+  { id: 2, name: "Best Selling", link: "/not" },
 ];
 
 const Navbar = ({ handleOrderPopup }) => {

@@ -1,18 +1,26 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../sections/Navbar/AuthContext";
-
-const usersData = {
-  users: [
-    { email: "user@example.com", password: "userpassword123" },
-    { email: "admin@example.com", password: "adminpassword456" },
-  ],
-};
+import * as CryptoJS from "crypto-js"; // Importing crypto-js for password hashing comparison
+import Cookies from "js-cookie"; // To handle cookies
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [rememberMe, setRememberMe] = useState(false); // State for "Remember Me" checkbox
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+
+  useEffect(() => {
+    // If "Remember Me" was checked, pre-fill email from localStorage
+    const savedEmail = localStorage.getItem("email");
+    if (savedEmail) {
+      setFormData((prevData) => ({
+        ...prevData,
+        email: savedEmail,
+      }));
+      setRememberMe(true);
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -21,20 +29,44 @@ const Login = () => {
     }));
   };
 
+  const handleRememberMeChange = (e) => {
+    setRememberMe(e.target.checked);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const user = usersData.users.find(
-      (user) => user.email === formData.email && user.password === formData.password
-    );
+    // Retrieve users data from localStorage
+    const existingUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+    const user = existingUsers.find((user) => user.email === formData.email);
 
     if (!user) {
       alert("Invalid email or password!");
       return;
     }
 
+    // Compare the entered password with the hashed password stored in localStorage
+    const hashedPassword = CryptoJS.SHA256(formData.password).toString(); // Hash the entered password
+    if (hashedPassword !== user.password) {
+      alert("Invalid email or password!");
+      return;
+    }
+
+    // If the "Remember Me" checkbox is checked, store email in localStorage
+    if (rememberMe) {
+      localStorage.setItem("email", formData.email); // Save email in localStorage
+      Cookies.set("authToken", user.email, { expires: 7 }); // Save authToken in cookies for 7 days
+      localStorage.setItem("isLoggedIn", "true"); // Store login status in localStorage
+    } else {
+      // If not "Remember Me", don't store the email
+      localStorage.removeItem("email");
+      Cookies.remove("authToken");
+      localStorage.removeItem("isLoggedIn");
+    }
+
+    // Log the user in and redirect
     login(user.email);
-    navigate("/");
+    navigate("/"); // Redirect to home page after successful login
   };
 
   return (
@@ -73,6 +105,20 @@ const Login = () => {
             />
           </div>
 
+          {/* Remember Me Checkbox */}
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={handleRememberMeChange}
+              className="mr-2"
+            />
+            <label htmlFor="rememberMe" className="text-sm text-gray-600 dark:text-gray-400">
+              Remember Me
+            </label>
+          </div>
+
           {/* Submit Button */}
           <button
             type="submit"
@@ -99,4 +145,7 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
 

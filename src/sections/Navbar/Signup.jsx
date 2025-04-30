@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from "react"; // <-- Added useContext import
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../sections/Navbar/AuthContext";
-import Cookies from "js-cookie";
+import * as CryptoJS from "crypto-js"; // <-- Import crypto-js for hashing
+import { AuthContext } from "../../sections/Navbar/AuthContext"; // <-- Your AuthContext
+import Cookies from "js-cookie"; // <-- For handling cookies
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -10,8 +11,8 @@ const Signup = () => {
     confirmPassword: "",
   });
 
-  const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // <-- Using useContext to access login function from AuthContext
+  const navigate = useNavigate(); // <-- React Router's useNavigate to redirect
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -24,10 +25,10 @@ const Signup = () => {
     const header = { alg: "HS256", typ: "JWT" };
     const payload = {
       email,
-      exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60,
+      exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60, // Token expiration time (7 days)
     };
-    const base64Encode = (obj) => btoa(JSON.stringify(obj));
-    return `${base64Encode(header)}.${base64Encode(payload)}.signature`;
+    const base64Encode = (obj) => btoa(JSON.stringify(obj)); // Base64 encode the payload and header
+    return `${base64Encode(header)}.${base64Encode(payload)}.signature`; // JWT signature (not secure for production)
   };
 
   const handleSubmit = (e) => {
@@ -38,13 +39,29 @@ const Signup = () => {
       return;
     }
 
-    // Save user in localStorage
+    // Check if the user already exists in localStorage
     const existingUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+    const userExists = existingUsers.some(
+      (user) => user.email === formData.email
+    );
+
+    if (userExists) {
+      alert("This email is already registered.");
+      return;
+    }
+
+    // Hash the password using SHA256 from crypto-js
+    const hashedPassword = CryptoJS.SHA256(formData.password).toString(); // Using SHA256 to hash the password
+
+    // Save the new user with hashed password in localStorage
     const newUser = {
       email: formData.email,
-      password: formData.password,
+      password: hashedPassword,
     };
-    localStorage.setItem("registeredUsers", JSON.stringify([...existingUsers, newUser]));
+    localStorage.setItem(
+      "registeredUsers",
+      JSON.stringify([...existingUsers, newUser])
+    );
 
     // Generate Token and Save in Cookie
     const token = generateToken(formData.email);
@@ -54,7 +71,7 @@ const Signup = () => {
     login(formData.email);
 
     alert("Signup successful! Welcome 🎉");
-    navigate("/");
+    navigate("/"); // Redirect to home page after successful signup
   };
 
   return (
@@ -134,4 +151,5 @@ const Signup = () => {
 };
 
 export default Signup;
+
 
