@@ -11,14 +11,7 @@ const NotFound = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-200 to-blue-200 dark:bg-gray-800">
       <div className="bg-white dark:bg-slate-800 p-10 rounded-xl shadow-xl w-[80%] max-w-lg text-center space-y-6">
-        {/* React Logo Section */}
-        <div className="mb-8">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" // React logo URL
-            alt="React Logo"
-            className="mx-auto w-24 h-24"
-          />
-        </div>
+       
 
         {/* 404 Message */}
         <h1 className="text-6xl font-extrabold text-indigo-600 dark:text-indigo-400">
