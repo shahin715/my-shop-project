@@ -9,14 +9,14 @@ import { AuthContext } from "../../sections/Navbar/AuthContext";
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
-  { id: 2, name: "Men's Wear", link: "/no" },
+  { id: 2, name: "Men's Wear", link: "/menswear" },
   { id: 3, name: "Kids Wear", link: "/kids-wear" },
   { id: 4, name: "Women's Wear", link: "/womens-wear" },
   { id: 5, name: "Electronics", link: "/ElectronicsProductList" },
 ];
 
 const DropDropdownlist = [
-  { id: 1, name: "Trending Products", link: "/no" },
+  { id: 1, name: "Trending Products", link: "/error" },
   { id: 2, name: "Best Selling", link: "/no" },
 ];
 

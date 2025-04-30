@@ -28,7 +28,8 @@ import TopProductDetail from "./sections/TopProduct/TopProductDetail";
 import MensWear from "./sections/comPages/mens-wear/MensWear";
 import MensWearDetail from "./sections/comPages/mens-wear/MensWearDetail";
 import { AuthProvider } from "./sections/Navbar/AuthProvider"; 
-import NoFound from "./sections/Navbar/noFound"
+import NoFound from "./sections/Navbar/noFound";
+import Error from "./sections/Navbar/Error";
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
@@ -81,8 +82,9 @@ const App = () => {
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/menswear" element={<MensWear />} />
           <Route path="/menswear/:id" element={<MensWearDetail />} />
-    
           <Route path="/no" element={<NoFound/>} />
+          <Route path="/error" element={<Error />} />
+          
         </Routes>
 
         <Popup />
