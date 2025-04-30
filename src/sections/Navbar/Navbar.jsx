@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
-import { FaCartShopping } from "react-icons/fa6";
-import { FaCaretDown } from "react-icons/fa";
+import { FaCartShopping, FaCaretDown } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useOrder } from "../Order/OrderContextStore";
@@ -24,6 +23,7 @@ const Navbar = ({ handleOrderPopup }) => {
   const { user, logout } = useContext(AuthContext);
   const { orders } = useOrder();
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu toggle
 
   const handleOrderClick = () => {
     if (handleOrderPopup) {
@@ -41,13 +41,16 @@ const Navbar = ({ handleOrderPopup }) => {
     navigate("/login");
   };
 
+  // Toggle mobile menu visibility
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="shadow-md bg-white dark:bg-slate-800 dark:text-white duration-200 relative z-40">
-      
       {/* Upper Navbar */}
       <div className="bg-[#4263eb]/40 py-2">
         <div className="container flex justify-between items-center">
-
           {/* Logo */}
           <div>
             <Link to="/" className="font-bold text-xl flex items-center gap-1">
@@ -65,7 +68,7 @@ const Navbar = ({ handleOrderPopup }) => {
                 type="text"
                 placeholder="Search"
                 aria-label="Search products"
-                className="w-[200px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-lg border border-gray-300 py-1 px-2
+                className="w-[150px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-lg border border-gray-300 py-1 px-2
                 text-sm focus:outline-none focus:border-[#4263eb] dark:border-gray-500 dark:bg-slate-800 dark:text-white"
               />
               <IoMdSearch className="text-slate-800 dark:text-white group-hover:text-[#4263eb] absolute top-1/2 -translate-y-1/2 right-3" />
@@ -89,15 +92,14 @@ const Navbar = ({ handleOrderPopup }) => {
 
             {/* Login / Logout */}
             {user ? (
-             <div className="flex items-center gap-3">
-             <button
-               onClick={handleLogout}
-               className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-full transition-all duration-200"
-             >
-               Logout
-             </button>
-           </div>
-           
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-full transition-all duration-200"
+                >
+                  Logout
+                </button>
+              </div>
             ) : (
               <button
                 onClick={handleLogin}
@@ -107,13 +109,12 @@ const Navbar = ({ handleOrderPopup }) => {
               </button>
             )}
           </div>
-
         </div>
       </div>
 
       {/* Lower Navbar */}
       <div data-aos="zoom-in" className="flex justify-center">
-        <ul className="sm:flex hidden items-center gap-4">
+        <ul className={`sm:flex hidden items-center gap-4 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
           {Menu.map((data) => (
             <li key={data.id}>
               <Link
@@ -151,9 +152,9 @@ const Navbar = ({ handleOrderPopup }) => {
         </ul>
 
         {/* Mobile Navbar */}
-        <div className="sm:hidden flex justify-between items-center">
+        <div className="sm:hidden flex justify-between items-center w-full">
           {/* Burger Menu */}
-          <button className="text-white">
+          <button onClick={toggleMobileMenu} className="text-white">
             <FaCaretDown />
           </button>
         </div>
@@ -167,6 +168,8 @@ Navbar.defaultProps = {
 };
 
 export default Navbar;
+
+
 
 
 

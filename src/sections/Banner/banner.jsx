@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 import BannerImg from "../../assets/images/banner.jpg";
 import { GrSecure } from "react-icons/gr";
 import { IoFastFood } from "react-icons/io5";
-import { GiFoodTruck, GiPresent } from "react-icons/gi"; // Added different icon
+import { GiFoodTruck, GiPresent } from "react-icons/gi";
 
 const Banner = () => {
   useEffect(() => {
@@ -20,7 +20,7 @@ const Banner = () => {
             <img
               src={BannerImg}
               alt="Winter Sale Banner"
-              className="max-w-[500px] h-[350px] w-full mx-auto object-cover rounded-lg shadow-md"
+              className="w-full max-w-[500px] h-auto mx-auto object-cover rounded-lg shadow-md"
             />
           </div>
 
@@ -33,7 +33,7 @@ const Banner = () => {
               data-aos="fade-up"
               className="text-sm text-gray-500 tracking-wide leading-5"
             >
-        "Beat the heat with our sizzling summer sale! Enjoy 60% off on select items-shop now and save big while stocks last!"
+              "Beat the heat with our sizzling summer sale! Enjoy 60% off on select items-shop now and save big while stocks last!"
             </p>
             <div className="flex flex-col gap-4">
               <div data-aos="fade-up" className="flex items-center gap-4">
