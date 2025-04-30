@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'; // To fetch the product id from the URL
+import { useParams } from 'react-router-dom'; 
 import { Helmet } from 'react-helmet-async';
 import Img1 from "../../../assets/images/product1.webp";
 import Img2 from "../../../assets/images/product2.jpg";

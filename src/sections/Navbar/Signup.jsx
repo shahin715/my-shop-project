@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../sections/Navbar/AuthContext"; // Import Context
+import { AuthContext } from "../../sections/Navbar/AuthContext";
 import Cookies from "js-cookie";
 
 const Signup = () => {

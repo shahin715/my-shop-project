@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import MensWearData from "./mensWearData"; // Assuming you already have this data imported
+import MensWearData from "./mensWearData"; 
 
 const MensWear = () => {
   return (

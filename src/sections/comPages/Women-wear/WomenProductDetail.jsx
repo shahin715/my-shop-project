@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async"; // ✅ Helmet import
-import WomenWearProducts from "../../../sections/comPages/Women-wear/WomenWearDataProduct"; // Import the product data
-import { useOrder } from "../../Order/OrderContextStore"; // Adjust the import as necessary
-import { FaStar, FaRegStar } from "react-icons/fa"; // Star icons for ratings
+import { Helmet } from "react-helmet-async";
+import WomenWearProducts from "../../../sections/comPages/Women-wear/WomenWearDataProduct";
+import { useOrder } from "../../Order/OrderContextStore";
+import { FaStar, FaRegStar } from "react-icons/fa";
 
 const WomenwearProductDetail = () => {
-  const { id } = useParams(); // Get the product ID from the URL parameters
-  const product = WomenWearProducts.find((item) => item.id === parseInt(id)); // Find the product by ID
-  const [quantity, setQuantity] = useState(1); // State for managing product quantity
-  const { addOrder } = useOrder(); // Access the addOrder function from the Order context
+  const { id } = useParams(); 
+  const product = WomenWearProducts.find((item) => item.id === parseInt(id));
+  const [quantity, setQuantity] = useState(1);
+  const { addOrder } = useOrder(); 
 
   // If the product is not found, display a "Product not found" message
   if (!product) {
@@ -26,7 +26,7 @@ const WomenwearProductDetail = () => {
 
   // Add the product to the cart
   const handleAddToCart = () => {
-    const cleanedPrice = Number(product.price.replace(/[^\d.-]/g, "")); // Clean the price to remove any unwanted characters
+    const cleanedPrice = Number(product.price.replace(/[^\d.-]/g, "")); 
     const newOrder = {
       id: product.id,
       title: product.title,
@@ -34,7 +34,7 @@ const WomenwearProductDetail = () => {
       price: cleanedPrice,
       quantity: quantity,
     };
-    addOrder(newOrder); // Add the product to the order
+    addOrder(newOrder); 
     alert(`Order added: ${quantity} x ${product.title}`); // Alert the user
   };
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async"; // ✅ Helmet import
+import { Helmet } from "react-helmet-async"; 
 import MensWearData from "./mensWearData";
 import { useOrder } from "../../Order/OrderContextStore";
 
@@ -56,7 +56,7 @@ const MensWearDetail = () => {
           <div className="mt-4 space-y-2">
             <p><span className="font-semibold">Product Code:</span> {product.code}</p>
             <p><span className="font-semibold">Availability:</span> {product.availability}</p>
-            <p><span className="font-semibold">Warranty:</span> 1-Year Warranty</p>
+          
             <p><span className="font-semibold">Shipping:</span> Free Shipping</p>
             <p><span className="font-semibold">Customer Support:</span> 24/7 Support</p>
           </div>

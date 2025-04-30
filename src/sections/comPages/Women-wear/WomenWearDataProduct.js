@@ -1,4 +1,4 @@
-import Img1 from "../../../assets/images/product1.webp"; // Example image paths
+import Img1 from "../../../assets/images/product1.webp"; 
 import Img2 from "../../../assets/images/product2.jpg";
 import Img3 from "../../../assets/images/product3i.webp";
 import Img4 from "../../../assets/images/product4.jpg";

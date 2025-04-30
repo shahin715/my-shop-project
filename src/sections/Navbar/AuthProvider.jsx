@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
-import { AuthContext } from "../../sections/Navbar/AuthContext"; // Import Context
+import { AuthContext } from "../../sections/Navbar/AuthContext"; 
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

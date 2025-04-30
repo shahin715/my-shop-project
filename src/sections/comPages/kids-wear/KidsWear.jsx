@@ -1,7 +1,7 @@
 import KidsWear from "../../comPages/kids-wear/KidsWearData";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async"; // ✅ Helmet import
+import { Helmet } from "react-helmet-async"; 
 
 
 const KidsWearProductList = () => {

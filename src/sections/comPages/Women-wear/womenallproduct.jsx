@@ -113,7 +113,7 @@ const WomenAllProduct = () => {
                 />
                 <h3 className="text-lg font-semibold text-gray-700 dark:text-white">{product.title}</h3>
                 <p className="text-gray-500 dark:text-gray-300">{product.description}</p>
-                {/* Rating Removed */}
+                
               </div>
             </Link>
           ))}
