@@ -84,6 +84,7 @@ const App = () => {
           <Route path="/menswear" element={<MensWear />} />
           <Route path="/menswear/:id" element={<MensWearDetail />} />
           <Route path="*" element={<NotFound />} />
+
         </Routes>
 
         <Popup />
