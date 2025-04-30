@@ -9,7 +9,7 @@ const NotFound = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:bg-gray-900">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-200 to-blue-200 dark:bg-gray-800">
       <div className="bg-white dark:bg-slate-800 p-10 rounded-xl shadow-xl w-[80%] max-w-lg text-center space-y-6">
         {/* React Logo Section */}
         <div className="mb-8">
