@@ -30,6 +30,7 @@ import MensWear from "./sections/comPages/mens-wear/MensWear";
 import MensWearDetail from "./sections/comPages/mens-wear/MensWearDetail";
 import { AuthProvider } from "./sections/Navbar/AuthProvider"; 
 import NotFound from "./sections/Navbar/NotFound"; 
+import NoFound from "./sections/Navbar/noFound"
 
 const App = () => {
   const [orderPopup, setOrderPopup] = useState(false);
@@ -84,7 +85,7 @@ const App = () => {
           <Route path="/menswear" element={<MensWear />} />
           <Route path="/menswear/:id" element={<MensWearDetail />} />
           <Route path="*" element={<NotFound />} />
-
+          <Route path="/no" element={<NoFound/>} />
         </Routes>
 
         <Popup />

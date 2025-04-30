@@ -9,7 +9,7 @@ import { AuthContext } from "../../sections/Navbar/AuthContext";
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
-  { id: 2, name: "Men's Wear", link: "/menswear" },
+  { id: 2, name: "Men's Wear", link: "/no" },
   { id: 3, name: "Kids Wear", link: "/kids-wear" },
   { id: 4, name: "Women's Wear", link: "/womens-wear" },
   { id: 5, name: "Electronics", link: "/ElectronicsProductList" },
@@ -24,7 +24,7 @@ const Navbar = ({ handleOrderPopup }) => {
   const { user, logout } = useContext(AuthContext);
   const { orders } = useOrder();
   const navigate = useNavigate();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu toggle
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
 
   const handleOrderClick = () => {
     if (handleOrderPopup) {
